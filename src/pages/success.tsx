@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Stripe from "stripe";
@@ -15,21 +16,28 @@ interface SuccessProps {
 
 export default function Success({costumerName,product}: SuccessProps) {
     return (
-        <SuccessContainer>
-          <h1>Purchase made</h1>
-    
-          <ImageContainer>
-            <Image src={product.imageUrl} width={120} height={110} alt="" />
-          </ImageContainer>
-    
-          <p>
-            Uhuul <strong>{costumerName}</strong>, your <strong>{product.name}</strong> is already on its way to your house.
-          </p>
-    
-          <Link href="/">
-            Back to catalog
-          </Link>
-        </SuccessContainer>
+        <>
+            <Head>
+                <title>Purchase made! | Shop</title>
+
+                <meta name="robots" content="noindex" />
+            </Head>
+            <SuccessContainer>
+            <h1>Purchase made</h1>
+        
+            <ImageContainer>
+                <Image src={product.imageUrl} width={120} height={110} alt="" />
+            </ImageContainer>
+        
+            <p>
+                Uhuul <strong>{costumerName}</strong>, your <strong>{product.name}</strong> is already on its way to your house.
+            </p>
+        
+            <Link href="/">
+                Back to catalog
+            </Link>
+            </SuccessContainer>
+        </>
     )
 }
 
